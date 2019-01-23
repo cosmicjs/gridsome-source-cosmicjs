@@ -17,11 +17,8 @@
   "license": "MIT",
   "homepage": "https://bitbytes.io",
   "scripts": {
-    "prepublish": "npm run build",
-    "build": "babel src --out-dir .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write 'src/**/*.js'",
-    "watch": "babel -w src --out-dir ."
+    "format": "prettier --write '*.js'"
   },
   "keywords": [
     "gridsome",
@@ -34,16 +31,10 @@
     "lodash": "^4.17.4"
   },
   "devDependencies": {
-    "babel-cli": "^6.24.1",
-    "babel-plugin-transform-async-to-generator": "^6.24.1",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-preset-env": "^1.6.0",
     "prettier": "^1.5.3",
     "pre-commit": "^1.2.2"
   },
   "pre-commit": [
-    "format",
-    "build"
+    "format"
   ]
 }
