@@ -4,22 +4,28 @@ const { capitalize } = require('lodash')
 class CosmicJsSource {
   static defaultOptions() {
     return {
-        typeName: 'Cosmicjs',
-        apiURL: 'https://api.cosmicjs.com/v1',
-        bucketSlug:'',
-        objectTypes: [],
-        apiAccess: {},
-    };
+      typeName: 'Cosmicjs',
+      apiURL: 'https://api.cosmicjs.com/v1',
+      bucketSlug: '',
+      objectTypes: [],
+      apiAccess: {},
+    }
   }
 
   constructor(api, options) {
-    this.options = options;
-    api.loadSource(args => this.fetchContent(args));
+    this.options = options
+    api.loadSource(args => this.fetchContent(args))
   }
 
   async fetchContent(store) {
-    const { addContentType } = store;
-    const { typeName, apiURL, bucketSlug, objectTypes, apiAccess } = this.options;
+    const { addContentType } = store
+    const {
+      typeName,
+      apiURL,
+      bucketSlug,
+      objectTypes,
+      apiAccess,
+    } = this.options
 
     const promises = objectTypes.map(objectType =>
       fetchData({
@@ -35,7 +41,7 @@ class CosmicJsSource {
     objectTypes.forEach((objectType, i) => {
       const contentType = addContentType({
         typeName: `${typeName}${capitalize(objectType)}`,
-      });
+      })
       var items = data[i]
       items.forEach((item, index) => {
         const node = {
@@ -46,12 +52,17 @@ class CosmicJsSource {
           content: item.content,
           path: `${objectType}/${item.slug}`,
           fields: {
-            nextPath: index < (items.length - 1) ? `${objectType}/${items[index + 1].slug}`: null,
-            prevPath: index > 0 ? `${objectType}/${items[index - 1].slug}`: null,
-            nextTitle: index < (items.length - 1) ? `${items[index + 1].title}`: null,
-            prevTitle: index > 0 ? `${items[index - 1].title}`: null,
-            ...item
-          }
+            nextPath:
+              index < items.length - 1
+                ? `${objectType}/${items[index + 1].slug}`
+                : null,
+            prevPath:
+              index > 0 ? `${objectType}/${items[index - 1].slug}` : null,
+            nextTitle:
+              index < items.length - 1 ? `${items[index + 1].title}` : null,
+            prevTitle: index > 0 ? `${items[index - 1].title}` : null,
+            ...item,
+          },
         }
         contentType.addNode(node)
       })
@@ -59,4 +70,4 @@ class CosmicJsSource {
   }
 }
 
-module.exports = CosmicJsSource;
+module.exports = CosmicJsSource
