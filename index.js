@@ -50,18 +50,19 @@ class CosmicJsSource {
           slug: item.slug || '',
           date: item.created_at,
           content: item.content,
-          path: `${objectType}/${item.slug}`,
+          path: `/${objectType}/${item.slug}`,
+          nextPath:
+            index < items.length - 1
+              ? `/${objectType}/${items[index + 1].slug}`
+              : null,
+          prevPath:
+            index > 0 ? `/${objectType}/${items[index - 1].slug}` : null,
+          nextTitle:
+            index < items.length - 1 ? `${items[index + 1].title}` : null,
+          prevTitle: index > 0 ? `${items[index - 1].title}` : null,
           metadata: {
-            nextPath:
-              index < items.length - 1
-                ? `${objectType}/${items[index + 1].slug}`
-                : null,
-            prevPath: index > 0 ? `${objectType}/${items[index - 1].slug}` : null,
-            nextTitle:
-              index < items.length - 1 ? `${items[index + 1].title}` : null,
-            prevTitle: index > 0 ? `${items[index - 1].title}` : null,
-            ...item,
-          }
+            ...item.metadata,
+          },
         }
         contentType.addNode(node)
       })
