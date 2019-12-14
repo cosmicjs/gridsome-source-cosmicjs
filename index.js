@@ -44,12 +44,7 @@ class CosmicJsSource {
       })
       var items = data[i]
       items.forEach((item, index) => {
-        const node = {
-          id: item._id,
-          title: item.title,
-          slug: item.slug || '',
-          date: item.created_at,
-          content: item.content,
+        const custom_fields = {
           path: `/${objectType}/${item.slug}`,
           nextPath:
             index < items.length - 1
@@ -60,9 +55,11 @@ class CosmicJsSource {
           nextTitle:
             index < items.length - 1 ? `${items[index + 1].title}` : null,
           prevTitle: index > 0 ? `${items[index - 1].title}` : null,
-          metadata: {
-            ...item.metadata,
-          },
+        }
+        const node = {
+          id: item._id,
+          ...node,
+          ...custom_fields
         }
         contentType.addNode(node)
       })
