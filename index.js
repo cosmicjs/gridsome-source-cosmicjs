@@ -59,7 +59,7 @@ class CosmicJsSource {
         const node = {
           id: item._id,
           ...node,
-          ...custom_fields
+          ...custom_fields,
         }
         contentType.addNode(node)
       })
