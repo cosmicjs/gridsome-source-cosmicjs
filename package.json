@@ -1,6 +1,6 @@
 {
   "name": "gridsome-source-cosmicjs",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Gridsome Source Plugin for building websites using Cosmic JS as a data source",
   "author": {
     "email": "jazibsawar@gmail.com",
