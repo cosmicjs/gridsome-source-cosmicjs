@@ -5,17 +5,17 @@
   "author": {
     "email": "jazibsawar@gmail.com",
     "name": "Jazib Sawar",
-    "url": "https://bitbytes.io"
+    "url": "https://cosmicjs.com"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/jazibsawar/gridsome-source-cosmicjs.git"
+    "url": "https://github.com/cosmicjs/gridsome-source-cosmicjs"
   },
   "bugs": {
-    "url": "https://github.com/jazibsawar/gridsome-source-cosmicjs/issues"
+    "url": "https://github.com/cosmicjs/gridsome-source-cosmicjs/issues"
   },
   "license": "MIT",
-  "homepage": "https://bitbytes.io",
+  "homepage": "https://cosmicjs.com",
   "scripts": {
     "test": "echo \"Error: no test specified\"",
     "format": "prettier --write '*.js'"
