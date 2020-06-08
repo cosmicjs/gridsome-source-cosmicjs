@@ -1,5 +1,5 @@
 const fetchData = require('./fetch')
-const { capitalize } = require('lodash')
+const { upperFirst, camelCase } = require('lodash')
 
 class CosmicJsSource {
   static defaultOptions() {
@@ -40,7 +40,7 @@ class CosmicJsSource {
 
     objectTypes.forEach((objectType, i) => {
       const contentType = addCollection({
-        typeName: `${typeName}${capitalize(objectType)}`,
+        typeName: `${typeName}${upperFirst(camelCase(objectType))}`,
       })
       var items = data[i]
       items.forEach((item, index) => {
